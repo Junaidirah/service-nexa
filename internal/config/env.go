@@ -25,7 +25,7 @@ func LoadEnv() (*Config, *SmtpConfig) {
 	_ = godotenv.Load()
 
 	config := &Config{
-		dbUrl:            os.Getenv("DB_URL"),
+		dbUrl:            os.Getenv("DATABASE_URL"),
 		jwtSecret:        os.Getenv("JWT_SECRET"),
 		jwtRefreshSecret: os.Getenv("JWT_REFRESH_SECRET"),
 		jwtExpire:        os.Getenv("JWT_EXPIRE"),
@@ -33,7 +33,7 @@ func LoadEnv() (*Config, *SmtpConfig) {
 		port:             os.Getenv("PORT"),
 	}
 	if config.dbUrl == "" {
-		panic("DB_URL not set")
+		panic("DATABASE_URL not set")
 	}
 	if config.jwtSecret == "" {
 		panic("JWT_SECRET not set")
